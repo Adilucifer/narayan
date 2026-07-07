@@ -1,0 +1,41 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "Flask Backend API",
+      "runtimeExecutable": "flask",
+      "runtimeArgs": ["run", "-p", "8088", "--reload", "--debugger"],
+      "port": 8088
+    },
+    {
+      "name": "Frontend Dev Server",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["--prefix", "superset-frontend", "run", "dev-server"],
+      "port": 9000
+    },
+    {
+      "name": "Storybook",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["--prefix", "superset-frontend", "run", "storybook"],
+      "port": 6006
+    },
+    {
+      "name": "WebSocket Server",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["--prefix", "superset-websocket", "run", "dev-server"],
+      "port": 8080
+    },
+    {
+      "name": "Celery Worker",
+      "runtimeExecutable": "celery",
+      "runtimeArgs": ["--app=superset.tasks.celery_app:app", "worker"],
+      "port": null
+    },
+    {
+      "name": "Celery Beat Scheduler",
+      "runtimeExecutable": "celery",
+      "runtimeArgs": ["--app=superset.tasks.celery_app:app", "beat", "--pidfile", "/tmp/celerybeat.pid", "--schedule", "/tmp/celerybeat-schedule"],
+      "port": null
+    }
+  ]
+}
